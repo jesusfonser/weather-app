@@ -1,3 +1,33 @@
 body{
-    background-color: rgb(154, 98, 206);
+    background-image: url("./img/1330873-clouds-weather.png");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+body > h1{
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 3rem;
+    font-style: italic;
+    margin-bottom: 0px;
+}
+
+body > h3 {
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+#big-container{
+    background-color: rgba(184, 145, 184, 0.849);
+    width: 80%;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
