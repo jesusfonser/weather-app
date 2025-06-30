@@ -1,3 +1,7 @@
+*{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 body{
     background-image: url("./img/1330873-clouds-weather.png");
     background-size: cover;
@@ -9,7 +13,6 @@ body{
 
 body > h1{
     color: white;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 3rem;
     font-style: italic;
     margin-bottom: 0px;
@@ -17,7 +20,6 @@ body > h1{
 
 body > h3 {
     color: white;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 #big-container{
@@ -26,6 +28,7 @@ body > h3 {
     padding: 1.5rem;
     border-radius: 1rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -47,4 +50,27 @@ button{
 button:hover{
     background-color: rgb(48, 74, 223);
     cursor: pointer;
+}
+
+#loader-div{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.loader {
+  display: none;
+  margin-top: 1rem;
+  border: 0.5rem solid #f3f3f3; 
+  border-top: 0.5rem solid #3498db;
+  border-radius: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

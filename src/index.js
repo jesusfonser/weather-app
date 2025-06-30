@@ -2,6 +2,7 @@ import "./style.css"
 
 const button = document.querySelector("button");
 const bigdiv = document.querySelector("#big-container");
+const loaddiv = document.querySelector(".loader");
 
 async function callDaInfo(city){
         const info = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=FYUUEU4LM4S82AZ5BT38GFSJC`);
@@ -11,6 +12,7 @@ async function callDaInfo(city){
 
 async function mostrarConsola(){
     try{
+        loaddiv.style.display = "block";
         const value = document.querySelector("input").value
         const datos = await callDaInfo(value);
         bigdiv.style.backgroundColor = "green";
@@ -19,6 +21,8 @@ async function mostrarConsola(){
     catch (error){
         console.log("Error acá" + error);
         bigdiv.style.backgroundColor = "red";
+    } finally {
+        loaddiv.style.display = "none";
     }
 }
 
