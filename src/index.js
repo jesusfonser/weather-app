@@ -8,6 +8,7 @@ async function callDaInfo(){
 
 callDaInfo();
 
+
 /*
 Pantalla de carga
 Input para meter una ciudad distinta

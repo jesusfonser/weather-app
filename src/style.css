@@ -22,12 +22,30 @@ body > h3 {
 }
 
 #big-container{
-    background-color: rgba(184, 145, 184, 0.849);
+    background-color: rgba(145, 151, 184, 0.849);
     width: 80%;
     padding: 1.5rem;
     border-radius: 1rem;
-    
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+input{
+    outline-width: 0;
+    padding: 0.5rem;
+    border-style: none;
+}
+
+button{
+    padding: 0.5rem;
+    background-color: rgb(85, 105, 221);
+    border-style: none;
+    color: white;
+    border-radius: 0.25rem;
+}
+
+button:hover{
+    background-color: rgb(48, 74, 223);
+    cursor: pointer;
 }
