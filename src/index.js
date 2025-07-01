@@ -1,6 +1,6 @@
 import "./style.css";
-import { buttonAPI } from "./data.js";
-import { loaderSwitch } from "./dom.js";
+import { buttonAPI, arrayDays } from "./data.js";
+import { loaderSwitch, createCell } from "./dom.js";
 
 const button = document.querySelector("button");
 
@@ -9,4 +9,5 @@ button.addEventListener("click", async (e) => {
   loaderSwitch();
   await buttonAPI();
   loaderSwitch();
+  createCell(arrayDays[0])
 });

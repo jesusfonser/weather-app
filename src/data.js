@@ -47,6 +47,10 @@ Por cada dia, construye una celda que muestre:
 const bigdiv = document.querySelector("#big-container");
 const loaddiv = document.querySelector(".loader");
 let arrayDays = [];
+const images = importAllImages(
+    require.context('./img/icons', false, /\.svg$/)
+);
+
 
 async function getData(city) {
   try {
@@ -71,6 +75,16 @@ async function buttonAPI() {
     transformIntoDataCell(day);
   });
   console.log(arrayDays);
+}
+
+function importAllImages(r) {
+    const images = {}
+    r.keys().forEach((path) => {
+        const filename = path.replace('./', '');
+        images[filename] = r(path);
+    })
+
+    return images;
 }
 
 function transformIntoDataCell(day) {
@@ -108,7 +122,12 @@ class dataCell {
     this.temp = temp;
     this.precip = precip;
     this.date = date;
-    this.img = `./img/icons/${icon}.svg`;
+
+    this.img = (function (){
+        const pedido = icon + ".svg";
+        return images[pedido]
+    })();
+
     this.weather = weather;
     this.hours = hours;
     this.fullWeather = fullWeather;
@@ -116,4 +135,4 @@ class dataCell {
   }
 }
 
-export { buttonAPI };
+export { buttonAPI, arrayDays };
