@@ -34,6 +34,10 @@ Por cada dia, construye una celda que muestre:
     - Temperatura en C
     - Enlace a tiempo detallado para ese día:
         + Tiempo por horas
+            *T
+            *P
+            *Icono
+            *Humedad
         + Tmax y Tmin, C y F
         + Humedad?
         + Precipitaciones
@@ -44,48 +48,47 @@ const bigdiv = document.querySelector("#big-container");
 const loaddiv = document.querySelector(".loader");
 let arrayDays = [];
 
-async function getData(city){
-    try{
-        const info = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=FYUUEU4LM4S82AZ5BT38GFSJC`);
-        const processed = await info.json();
-        //TODO: Meter función que modifique el DOM cuando se pille la info
-        return processed;
-    } catch (err){
-        //TODO: Meter función que modifique el DOM cuando haya error pillando info
-        console.log(err);    
-        return;
-        }
+async function getData(city) {
+  try {
+    const info = await fetch(
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=FYUUEU4LM4S82AZ5BT38GFSJC`,
+    );
+    const processed = await info.json();
+    //TODO: Meter función que modifique el DOM cuando se pille la info
+    return processed;
+  } catch (err) {
+    //TODO: Meter función que modifique el DOM cuando haya error pillando info
+    console.log(err);
+    return;
+  }
 }
 
-
-function buttonAPI(e){
-  e.preventDefault();
+async function buttonAPI() {
+  arrayDays = [];
   const cityInput = document.querySelector("input").value;
-  getData(cityInput).then(res => {
-    res.days.forEach(day => {
-        transformIntoDataCell(day)
-    })
-    console.log(arrayDays)}); //TODO: Función que procese la info de la API y de 15 dataCell
+  const res = await getData(cityInput);
+  res.days.forEach((day) => {
+    transformIntoDataCell(day);
+  });
+  console.log(arrayDays);
 }
 
 function transformIntoDataCell(day) {
-    let newCell = new dataCell (
-        day.tempmax,
-        day.tempmin,
-        day.temp,
-        day.precip,
-        day.datetime,
-        day.icon,
-        day.conditions,
-        day.hours,
-        day.description,
-        day.dew
-    )
+  let newCell = new dataCell(
+    day.tempmax,
+    day.tempmin,
+    day.temp,
+    day.precip,
+    day.datetime,
+    day.icon,
+    day.conditions,
+    day.hours,
+    day.description,
+    day.dew,
+  );
 
-    arrayDays.push(newCell);
+  arrayDays.push(newCell);
 }
-
-
 
 class dataCell {
   constructor(
@@ -113,4 +116,4 @@ class dataCell {
   }
 }
 
- export { buttonAPI }
+export { buttonAPI };
