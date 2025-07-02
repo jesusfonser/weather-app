@@ -82,4 +82,14 @@ button:hover{
 .cell{
     display: grid;
     grid-template-rows: 1fr 8fr 1fr;
+    background-color: white;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.bodyCell{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }

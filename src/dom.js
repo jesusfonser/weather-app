@@ -22,6 +22,7 @@ function createCell(day) {
     date_cell.innerText = day.date;
 
     const body_cell = document.createElement("div");
+    body_cell.setAttribute("class", "bodyCell")
     const img_body = document.createElement("img");
     img_body.src = day.img;
     const temp_cell = document.createElement("div");
