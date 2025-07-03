@@ -9,5 +9,6 @@ button.addEventListener("click", async (e) => {
   loaderSwitch();
   await buttonAPI();
   loaderSwitch();
-  createCell(arrayDays[0])
+  arrayDays.forEach(day => createCell(day))
+  //createCell(arrayDays[0])
 });

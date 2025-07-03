@@ -8,29 +8,47 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0;
+    height: 100vh;
 }
 
-body > h1{
+#first-container{
+    margin-top: 0.5rem;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#second-container{
+    height: 90%;
+    display: flex;
+    align-items: center;
+    max-width: 60%;
+}
+
+h1{
     color: white;
     font-size: 3rem;
     font-style: italic;
-    margin-bottom: 0px;
+    margin: 0;
 }
 
-body > h3 {
+h3 {
     color: white;
 }
 
 #big-container{
     background-color: rgba(145, 151, 184, 0.849);
-    width: 80%;
     padding: 1.5rem;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 }
 
 input{
@@ -74,17 +92,46 @@ button:hover{
     display: block;
 }
 
+.icon{
+    height: 5rem;
+    width: 5rem;
+}
+
+#grid-weather{
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    
+}
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
 .cell{
+    position: relative;
+    bottom: 0;
+    height: 11rem;
+    width: 8rem;
     display: grid;
     grid-template-rows: 1fr 8fr 1fr;
     background-color: white;
-    padding: 0.5rem;
+    padding: 0.5rem 1.5rem;
     text-align: center;
+    margin: 0.5rem;
+    border-radius: 0.4rem;
+    transition: bottom ease-out 0.2s, box-shadow ease-out 0.2s;
+    box-shadow: none
+}
+
+.cell:hover{
+    cursor: pointer;
+    position: relative;
+    bottom: 0.3rem;
+    box-shadow: 0.4rem 0.4rem 0.4rem rgb(107, 112, 136);
+    transition: bottom ease-out 0.2s, box-shadow ease-out 0.2s;
 }
 
 .bodyCell{
@@ -92,4 +139,10 @@ button:hover{
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    font-size: 2rem;
+    
+}
+
+.footCell{
+    font-size: 0.8rem;
 }
