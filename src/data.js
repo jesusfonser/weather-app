@@ -51,6 +51,10 @@ const images = importAllImages(
     require.context('./img/icons', false, /\.svg$/)
 );
 
+function getIcon(icon) {
+  const pedido = icon + ".svg";
+  return images[pedido];
+}
 
 async function getData(city) {
   try {
@@ -98,7 +102,7 @@ function transformIntoDataCell(day) {
     day.conditions,
     day.hours,
     day.description,
-    day.dew,
+    day.humidity,
   );
 
   arrayDays.push(newCell);
@@ -123,10 +127,7 @@ class dataCell {
     this.precip = precip;
     this.date = date;
 
-    this.img = (function (){
-        const pedido = icon + ".svg";
-        return images[pedido]
-    })();
+    this.img = getIcon(icon);
 
     this.weather = weather;
     this.hours = hours;
@@ -135,4 +136,4 @@ class dataCell {
   }
 }
 
-export { buttonAPI, arrayDays };
+export { buttonAPI, arrayDays, getIcon };
