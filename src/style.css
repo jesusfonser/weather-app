@@ -67,6 +67,13 @@ body{
     
 }
 
+#t-toggle{
+    position: absolute;
+    top: 2rem;
+    left: 70%;
+    font-size: 0.8rem;
+}
+
 input{
     outline-width: 0;
     padding: 0.5rem;

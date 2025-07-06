@@ -3,6 +3,7 @@ import { arrayDays, getIcon } from "./data.js"
 const gridWeather = document.getElementById("grid-weather");
 const divDetails = document.getElementById("details");
 const returner = document.getElementById("return");
+const temp_toggle = document.getElementById("temp-select")
 
 /*
 
@@ -10,7 +11,48 @@ const returner = document.getElementById("return");
 2.- Crear el segundo div con el tiempo más detallado
 3.- Crear un botón para cambiar temperaturas de C a F
 
+
+  const temps = document.querySelectorAll(".temp-cell");
+  Array.from(temps, (e) => e.innerHTML = '')
+
 */
+
+
+temp_toggle.addEventListener("change", () =>{
+  const gridMode = Boolean(document.querySelectorAll("#grid-weather > div").length);
+  const detailsMode = divDetails.classList.contains("active");
+  let temps;
+
+  if (gridMode){
+    temps = Array.from(document.querySelectorAll(".temp-cell"));
+  } else if(detailsMode){
+    temps = Array.from(document.querySelectorAll(".td_t"));
+    const eltemp_cell = document.querySelector(".temp-cell");
+    console.log(eltemp_cell)
+    eltemp_cell.innerText = getTemp(eltemp_cell.innerText);
+
+  } else{
+    return
+  }
+    Array.from(temps, (e) =>{
+      const t_prev = e.innerText
+      e.innerText = getTemp(t_prev);
+    })
+
+})
+
+
+function getTemp(temp){
+  if(temp_toggle.value === "F"){
+    let t = parseFloat(temp);
+    t = (t * 9 / 5) + 32
+    return t.toFixed(1).toString() + "F";
+  } else {
+    let t = parseFloat(temp);
+    t = (t - 32) * 5 / 9
+    return t.toFixed(1).toString() + "C";
+  }
+}
 
 function loaderSwitch() {
   gridWeather.innerHTML = '';
@@ -38,8 +80,10 @@ function createCell(day) {
     const img_body = document.createElement("img");
     img_body.src = day.img;
     img_body.setAttribute("class", "icon");
+    
     const temp_cell = document.createElement("div");
-    temp_cell.innerText = day.temp + "F";
+    temp_cell.setAttribute("class", "temp-cell")
+    temp_cell.innerText = day.temperature;
     body_cell.appendChild(img_body);
     body_cell.appendChild(temp_cell);
 
@@ -138,7 +182,16 @@ function buildTableTr(hour){
   tr.appendChild(td_weather);
 
   const td_t = document.createElement("td");
-  td_t.innerText = hour.temp;
+  td_t.setAttribute("class", "td_t")
+
+  if(temp_toggle.value === "F"){
+    td_t.innerText = hour.temp + "F";
+  } else{
+    let tempTd = parseFloat(hour.temp);
+    tempTd = (tempTd - 32) * 5 / 9
+    td_t.innerText = tempTd.toFixed(1) + "C";
+  }
+
   tr.appendChild(td_t);
 
   const td_p = document.createElement("td");

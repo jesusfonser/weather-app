@@ -44,6 +44,7 @@ Por cada dia, construye una celda que muestre:
 
 */
 
+const temp_toggle = document.getElementById("temp-select")
 const bigdiv = document.querySelector("#big-container");
 const loaddiv = document.querySelector(".loader");
 let arrayDays = [];
@@ -133,6 +134,16 @@ class dataCell {
     this.hours = hours;
     this.fullWeather = fullWeather;
     this.humedad = humedad;
+  }
+
+  get temperature(){
+    if(temp_toggle.value === "F"){
+      return this.temp + "F"
+    } else{
+      let t = parseFloat(this.temp);
+      t = (t - 32) * 5 / 9
+      return t.toFixed(1).toString() + "C";
+    }
   }
 }
 
