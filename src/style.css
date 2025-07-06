@@ -43,6 +43,28 @@ body{
     justify-content: center;
     max-height: 90%;
     width: 70vw;
+    position: relative;
+}
+
+#return{
+    display: none;
+}
+
+#return.active{
+    display: inline;
+    position: absolute;
+    right: 87%;
+    top: 5rem;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: rgb(48, 74, 223);
+}
+
+#return:hover{
+    cursor: pointer;
+    color: rgb(62, 77, 163);
+    
 }
 
 input{

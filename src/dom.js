@@ -2,6 +2,7 @@ import { arrayDays, getIcon } from "./data.js"
 
 const gridWeather = document.getElementById("grid-weather");
 const divDetails = document.getElementById("details");
+const returner = document.getElementById("return");
 
 /*
 
@@ -17,6 +18,12 @@ function loaderSwitch() {
   loader.classList.toggle("active");
 }
 
+function cleanDetails(){
+  if(divDetails.classList.contains("active")){
+    divDetails.innerHTML = '';
+    divDetails.classList.toggle("active");
+  }
+}
 
 function createCell(day) { 
 
@@ -52,16 +59,10 @@ function createCell(day) {
 }
 
 function dayDetails(day, icon, temp){
-/*
-
-day es el dia que se usa en la funcion para crear celdas
-icon es el elemento img usado en la funcion para crear celdas
-temp es el temp_cell de la funcion para crear celdas
-
-*/
-
   gridWeather.innerHTML = '';
   divDetails.classList.toggle("active");
+
+  returner.classList.toggle("active");
 
   const h1data = document.createElement("h1");
   h1data.innerHTML = day.weather;
@@ -94,6 +95,7 @@ temp es el temp_cell de la funcion para crear celdas
   divDetails.appendChild(divTable);
 
 }
+
 
 function buildTableDetails(day){
   const table = document.createElement("table");
@@ -150,82 +152,5 @@ function buildTableTr(hour){
   return tr
 }
 
-export { loaderSwitch, createCell };
 
-/*
-cloudcover
-: 
-0
-conditions
-: 
-"Clear"
-datetime
-: 
-"03:00:00"
-datetimeEpoch
-: 
-1751763600
-dew
-: 
-54.9
-feelslike
-: 
-68.4
-humidity
-: 
-62.06
-icon
-: 
-"clear-night"
-precip
-: 
-0
-precipprob
-: 
-0
-preciptype
-: 
-null
-pressure
-: 
-1017
-severerisk
-: 
-10
-snow
-: 
-0
-snowdepth
-: 
-0
-solarenergy
-: 
-0
-solarradiation
-: 
-0
-source
-: 
-"fcst"
-stations
-: 
-null
-temp
-: 
-68.4
-uvindex
-: 
-0
-visibility
-: 
-15
-winddir
-: 
-75.1
-windgust
-: 
-15.7
-windspeed
-: 
-2.2
-*/
+export { loaderSwitch, createCell, cleanDetails };
