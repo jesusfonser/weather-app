@@ -186,5 +186,30 @@ button:hover{
 }
 
 #tabla{
-    overflow: scroll;
+    overflow-y: scroll;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+table{
+    width: 100%;
+    background-color: white;
+    border: 1px grey solid;
+    border-collapse: collapse;
+}
+
+td, th{
+    text-align: center;
+    padding: 0.5rem;
+    border: 1px rgb(154, 175, 180) solid;
+}
+
+tr:nth-child(2n+3){
+    background-color: rgb(190, 204, 207);
+}
+
+tr:first-child{
+    background-color: rgb(154, 175, 180);
 }
